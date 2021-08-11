@@ -38,13 +38,17 @@ export const UserStorage = ({ children }) => {
             const { url, options } = TOKEN_POST({username, password});
             const tokenResponse = await fetch(url, options);
             if(!tokenResponse.ok) {
-                throw new Error(`Error: ${tokenResponse.statusText}`);
+                const json = await tokenResponse.json();
+                // console.log('tokenResponse', tokenResponse);
+                // console.log('json', json);
+                throw new Error(`Error: ${json.message}`);
             }
             const { token } = await tokenResponse.json();
             window.localStorage.setItem('token', token);
             await getUser(token);
             navigate('/conta');
         } catch (err) {
+            // console.log('error', error)
             setError(err.message);
             setLogin(false);
         } finally {
@@ -68,6 +72,8 @@ export const UserStorage = ({ children }) => {
                 } finally {
                     setLoading(false);
                 }
+            } else {
+                setLogin(false);
             }
         }
         autoLogin();
