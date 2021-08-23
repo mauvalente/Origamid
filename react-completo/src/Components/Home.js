@@ -1,11 +1,13 @@
 import React from 'react';
-import styles from './Home.module.css';
+import Feed from './Feed/Feed';
+import Head from './Helper/Head';
 
 const Home = () => {
     return (
-        <div className={styles.home}>
-            Home
-        </div>
+        <section className="container mainContainer">
+            <Head title="Photos" description="Dogs home, with photo feed" />
+            <Feed />
+        </section>
 
     )
 }

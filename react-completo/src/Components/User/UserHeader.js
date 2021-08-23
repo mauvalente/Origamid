@@ -11,7 +11,7 @@ const UserHeader = () => {
         const {pathname} = location;
 
         switch(pathname) {
-            case '/account/statistics':
+            case '/account/stats':
                 setStatus('Statistics');
                 break;
             case '/account/post':
