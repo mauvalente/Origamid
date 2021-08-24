@@ -32,7 +32,7 @@ const LoginForm = () => {
                 <Input label="User" type="text" name="username" {...username} />
                 <Input label="Password" type="password" name="password" {...password} />
                 {loading ? <Button disabled>Loading...</Button> : <Button>Enter</Button>}
-                <Error error={error} />
+                <Error error={error && "Something went wrong. Please try again."} />
             </form>
             <Link className={styles.lost} to="/login/lost">
                 Lost Password
